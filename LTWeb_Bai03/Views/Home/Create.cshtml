@@ -1,0 +1,45 @@
+﻿@model LTWeb_Bai03.Models.Employee
+
+@{
+    ViewBag.Title = "THÊM MỚI NHÂN VIÊN";
+}
+
+<h2>THÊM MỚI NHÂN VIÊN</h2>
+
+@using (Html.BeginForm("Create", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label>Mã nhân viên</label>
+        @Html.TextBoxFor(model => model.Id, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Họ và tên</label>
+        @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Giới tính</label>
+        @Html.DropDownList("Gender", null, "Chọn giới tính", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Thành phố</label>
+        @Html.TextBoxFor(model => model.City, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Phòng ban</label>
+        @Html.DropDownList("DeptId", null, "Select Department", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Ảnh</label>
+        <input type="file" name="Image" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Create</button>
+    @Html.ActionLink("Back to List", "EmployeeList", null, new { @class = "btn btn-secondary ml-2" })
+}

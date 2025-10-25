@@ -1,0 +1,13 @@
+﻿@model IEnumerable<LTWeb_Bai03.Models.Department>
+
+<div class="list-group">
+    <h5 class="list-group-item active text-center">DANH SÁCH PHÒNG BAN</h5>
+
+    @foreach (var dept in Model)
+    {
+        <a href="@Url.Action("EmployeeByDept", "Home", new { id = dept.DeptId })"
+           class="list-group-item list-group-item-action">
+            @dept.Name
+        </a>
+    }
+</div>

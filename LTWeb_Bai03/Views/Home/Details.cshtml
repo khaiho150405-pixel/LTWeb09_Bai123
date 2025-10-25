@@ -1,0 +1,44 @@
+﻿@model LTWeb_Bai03.Models.Employee
+
+@{
+    ViewBag.Title = "Chi tiết nhân viên";
+}
+
+<h2>Chi tiết nhân viên</h2>
+
+<div>
+    <h4>@Model.Name</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Mã nhân viên</dt>
+        <dd>@Model.Id</dd>
+
+        <dt>Tên nhân viên</dt>
+        <dd>@Model.Name</dd>
+
+        <dt>Giới tính</dt>
+        <dd>@Model.Gender</dd>
+
+        <dt>Thành phố</dt>
+        <dd>@Model.City</dd>
+
+        <dt>Phòng ban</dt>
+        <dd>@Model.Department.Name</dd>
+
+        <dt>Ảnh</dt>
+        <dd>
+            @if (!string.IsNullOrEmpty(Model.Img))
+            {
+                <img src="@Url.Content(Model.Img)" alt="Ảnh nhân viên" width="150" height="150" />
+            }
+            else
+            {
+                <p>Không có ảnh</p>
+            }
+        </dd>
+    </dl>
+</div>
+
+<p>
+    @Html.ActionLink("Quay lại danh sách", "EmployeeList")
+</p>
